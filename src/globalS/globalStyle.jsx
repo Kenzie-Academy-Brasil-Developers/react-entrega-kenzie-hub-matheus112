@@ -25,6 +25,8 @@ const GlobalStyle = createGlobalStyle`
     body{
         height: 100vh;
         width: 100vw;
+        background-color: #121214;
+        overflow: hidden;
     }
     ul{
         list-style: none;
@@ -86,10 +88,10 @@ ul::-webkit-scrollbar-thumb{
         width: 10px;
     } 
 }
-main{
+/* main{
     width: 100vw;
     height: 100vh;
-}
+} */
 `
 
 export default GlobalStyle;

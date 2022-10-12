@@ -4,17 +4,17 @@ import styled from 'styled-components'
 export const Nav = styled.nav`
         font-family: 'Inter', sans-serif;
         width: 100vw;
+        min-width: 100vw;
     button{
         border: none;
-        width: 5vw;
-        min-width: 5vw;
+        width: 50px;
+        max-width:15vw;
         height: 30px;
         border-radius:4px;
         background-color: var(--color-login-container);
         color:var(--color-button-text);
     }
-    .divheader{
-        
+    .divheader{ 
     background-color: var(--color-header);
     display: flex;
     height: 72px;
@@ -29,15 +29,20 @@ export const Container = styled.header`
     color: white;
     background-color: #000000;
     height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: flex-start;
+    overflow: hidden;
+
     p{
-        margin-top: 20px;
         font-weight: 700;
         font-size: 18px;
     }
+    .pName{
+    font-size:17px ;
+}
     .line{
         width: 100vw;
         height: 1px;
@@ -54,10 +59,45 @@ export const Container = styled.header`
     .spanModule{
         color: var(--color-grey-text);
         font-size: 12px;
-        margin-left: 300px;
     }
+    .DivInfosDev{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 10px;
+        gap: 20px;
+    }
+    .divInfoUser{
+    width: 100vw;
+    height: 250px;
+    margin-top: 50px;
+    display: flex;
+
+    justify-content: space-around;
+    align-content: space-around;
+    align-items: center;
+}
+.DivInfosDev span{
+    width: 80vw;
+    font-size: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.DivInfosDev p{
+    width: 80vw;
+    font-size: 12.0px;
+    display: flex;
+    font-weight: 800;
+    align-items: center;
+    justify-content: center;
+}
+
+    
     @media (min-width: 728px) {
-        font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: white;
     background-color: #000000;
     height: 100vh;
@@ -92,5 +132,20 @@ export const Container = styled.header`
         display: flex;
         gap: 20px;
 }
+
+    .DivInfosDev span{
+    width: 500px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.DivInfosDev p{
+    width: 500px;
+    font-size: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
     }
+
 `

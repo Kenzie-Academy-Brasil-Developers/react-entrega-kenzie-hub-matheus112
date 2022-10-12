@@ -11,7 +11,7 @@ import {toast} from 'react-toastify'
 function Register(){
     const RegisterSucesso =() => toast.success('Conta criado com sucesso!', {
         position: "top-center",
-        autoClose: 5000,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -19,36 +19,35 @@ function Register(){
         progress: undefined,
         theme: "light",
         });
-        const RegisterError =() => toast.error('Dados invalidos!', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            });
+    const RegisterError =() => toast.error('Email já cadastrado!', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
 const formSchema = yup.object({
-name:yup.string().required('Campo obrigatório').min(2,'Mínimo de 2 digitos'),
-email: yup.string().required('Campo obrigatório').email('Email inválido'),
-password: yup.string().required('Campo obrigatorio').min(8,'Mínimo de 8 dígitos'),
-confirmar: yup.string().required('Senha esta diferente').min(8,'Mínimo de 8 dígitos').oneOf([yup.ref("password")], "Senhas diferentes!"),
+        name:yup.string().required('Campo obrigatório').min(2,'- Mínimo de 2 digitos'),
+        email: yup.string().required('Campo obrigatório').email('- Email inválido'),
+        password: yup.string().required('Campo obrigatorio').min(8,'- Mínimo de 8 dígitos'),
+        confirmar: yup.string().required('Senha esta diferente').min(8,'- Mínimo de 8 dígitos').oneOf([yup.ref("password")], "Senhas diferentes!"),
 })
 const login= useNavigate()
 
-const {register, handleSubmit , formState:{errors} }= useForm({
-resolver: yupResolver(formSchema)
-})
-function RegisterUser (data){
+const {register, handleSubmit , formState:{errors} }= useForm({resolver: yupResolver(formSchema)})
 
-    console.log(data)
+
+function RegisterUser (data){
     Api.post("/users", data)
-    .then((res) => {
-        RegisterSucesso()
+        .then((res) => {
+            login('/')
+            RegisterSucesso()
 })
-.catch((err) => {
-    RegisterError()
+        .catch((err) => {
+            RegisterError()
 });
 };
 return(
@@ -61,23 +60,23 @@ return(
         <h1 className='h1Register'>Crie sua conta</h1>
         <span className='slogan'>Rapido e grátis , vamos nessa</span>
         <div className='DivNameRegister'>
-            <label>Nome  <span className='errorSpan'>- {errors.name?.message}</span> </label>
+            <label>Nome  <span className='errorSpan'> {errors.name?.message}</span> </label>
             
             <Input name="name" type="text" placeholder="Digite aqui seu Nome" register={register} />
         </div>
         <div className='emailRegiste'>
 
-            <label htmlFor="">Email <span className='errorSpan'>- {errors.email?.message}</span></label>
+            <label htmlFor="">Email <span className='errorSpan'> {errors.email?.message}</span></label>
             <Input name="email" type="text" placeholder="Digite aqui seu email" register={register} />
         </div>
         <div className='senhaRegiste'>
 
-            <label htmlFor="">Senha <span className='errorSpan'>- {errors.password?.message}</span></label>
+            <label htmlFor="">Senha <span className='errorSpan'>{errors.password?.message}</span></label>
             <Input name="password" type="text" placeholder="Digite aqui sua senha" register={register} />
         </div>
         <div className='senhaRegiste'>
 
-            <label htmlFor="">Confirmar Senha <span className='errorSpan'>- {errors.confirmar?.message}</span></label>
+            <label htmlFor="">Confirmar Senha <span className='errorSpan'> {errors.confirmar?.message}</span></label>
             <Input name="confirmar" type="text" placeholder="Confirme sua senha" register={register} />
         </div>
         <div className='bioRegiste'>

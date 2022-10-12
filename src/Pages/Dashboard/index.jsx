@@ -18,13 +18,12 @@ function Dashboard(){
         log('/')
     }
     
-      useEffect(()=>{
-
+    useEffect(()=>{
         if(!userId){
             log('/')
         }
-      },[log,userId])  
- 
+    },[log,userId])  
+
     return(
         <>
         <Nav>
@@ -39,12 +38,12 @@ function Dashboard(){
 
                     <div className="divInfoUser">
 
-                <p>Olá ,{name}</p>
+                <p className="pName">Olá ,{name}</p>
                 <span className="spanModule">{course_module}</span>
                     </div>
-                <span className="line"></span>
                 <div className="DivInfosDev">
-                 <p>Que pena! Estamos em desenvolvimento :( </p>
+                {/* <span className="line"></span> */}
+                 <p>Que pena!Estamos em desenvolvimento  :( </p>
                  <span>Nossa aplicação está em desenvolvimento, em breve teremos novidades</span>
                  </div>
                 </div>
