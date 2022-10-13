@@ -5,9 +5,8 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    min-height: 100vh;
-    width: 100vw;
+    min-height: 100%;
+    width: 100%;
     flex-direction: column;
     background-color: #000;
     form{

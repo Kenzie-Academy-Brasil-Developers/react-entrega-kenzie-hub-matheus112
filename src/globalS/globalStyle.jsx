@@ -22,16 +22,13 @@ const GlobalStyle = createGlobalStyle`
         --button-hover:#59323F;
 
     
-    body{
-        height: 100vh;
-        width: 100vw;
-        background-color: #121214;
-        overflow: hidden;
-    }
+    
     ul{
         list-style: none;
     }
-
+  body{
+    min-height: 100vh;
+  }
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,

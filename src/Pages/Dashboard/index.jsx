@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom"
 import img from "../../img/Logo.png"
 import './style'
 import {useEffect} from "react"
-import { Container, Nav } from "./style"
+import { Container, Main, Nav } from "./style"
 function Dashboard(){
 
     const log = useNavigate()
@@ -41,13 +41,12 @@ function Dashboard(){
                 <p className="pName">Olá ,{name}</p>
                 <span className="spanModule">{course_module}</span>
                     </div>
-                <div className="DivInfosDev">
-                {/* <span className="line"></span> */}
-                 <p>Que pena!Estamos em desenvolvimento  :( </p>
-                 <span>Nossa aplicação está em desenvolvimento, em breve teremos novidades</span>
-                 </div>
                 </div>
             </Container>
+            <Main >
+                <p>Que pena!Estamos em desenvolvimento  :( </p>
+                <span>Nossa aplicação está em desenvolvimento, em breve teremos novidades</span>
+            </Main>
         </>
 
     )

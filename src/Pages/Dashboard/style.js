@@ -1,10 +1,9 @@
 import styled from 'styled-components'
 
 
-export const Nav = styled.nav`
+export const Nav = styled.nav `
         font-family: 'Inter', sans-serif;
-        width: 100vw;
-        min-width: 100vw;
+        width: 100%;
     button{
         border: none;
         width: 50px;
@@ -24,17 +23,15 @@ export const Nav = styled.nav`
     }
 
 `
-export const Container = styled.header`
+export const Container = styled.header `
     font-family: 'Inter', sans-serif;
     color: white;
     background-color: #000000;
-    height: 100vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: flex-start;
-    overflow: hidden;
 
     p{
         font-weight: 700;
@@ -49,29 +46,19 @@ export const Container = styled.header`
         background-color: #212529;
     }
     .divUser{
-    height: 100px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: flex-start;
-    margin-left: 5px;
     }
     .spanModule{
         color: var(--color-grey-text);
         font-size: 12px;
     }
-    .DivInfosDev{
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        font-size: 10px;
-        gap: 20px;
-    }
+
     .divInfoUser{
     width: 100vw;
-    height: 250px;
     margin-top: 50px;
     display: flex;
 
@@ -79,28 +66,15 @@ export const Container = styled.header`
     align-content: space-around;
     align-items: center;
 }
-.DivInfosDev span{
-    width: 80vw;
-    font-size: 10px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-.DivInfosDev p{
-    width: 80vw;
-    font-size: 12.0px;
-    display: flex;
-    font-weight: 800;
-    align-items: center;
-    justify-content: center;
-}
+
 
     
     @media (min-width: 728px) {
     font-family: 'Inter', sans-serif;
     color: white;
     background-color: #000000;
-    height: 100vh;
+    min-width: 100%;
+    height: 100px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -110,42 +84,77 @@ export const Container = styled.header`
     .divUser{
     height: 150px;
     width: 100% ;
+    background-color: #000000;
 }
     .divInfoUser{
-        width: 100vw;
-        height: 250px;
+        min-width: 100%;
         margin-top: 50px;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
     }
-    .DivInfosDev{
-        width: 100vw;
-        height: 250px;
+
+    }
+
+`
+export const Main = styled.main `
+        color: white;
+        background-color: #000;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-    }
-    .DivInfosDev{   
-        width   : 100vw ;
-        display: flex;
-        gap: 20px;
+        margin-top: 50px;
+
+
+span{
+    width: 80vw;
+    font-size: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+p{
+    width: 80vw;
+    font-size: 15.0px;
+    display: flex;
+    font-weight: 800;
+    align-items: center;
+    justify-content: center;
 }
 
-    .DivInfosDev span{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 10px;
+        gap: 20px;
+    
+ @media (min-width: 728px) {
+        color: white;
+        background-color: #000;
+        display: flex;
+        min-height: 100%;
+        
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+
+    span{
     width: 500px;
     align-items: center;
     display: flex;
     justify-content: center;
 }
-.DivInfosDev p{
+ p{
     width: 500px;
     font-size: 20px;
     align-items: center;
     display: flex;
     justify-content: center;
 }
-    }
+ }
 
 `
