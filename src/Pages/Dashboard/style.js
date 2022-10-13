@@ -116,7 +116,7 @@ span{
 }
 p{
     width: 80vw;
-    font-size: 15.0px;
+    font-size: 20px;
     display: flex;
     font-weight: 800;
     align-items: center;
