@@ -116,7 +116,7 @@ span{
 }
 p{
     width: 80vw;
-    font-size: 20px;
+    font-size: 12px;
     display: flex;
     font-weight: 800;
     align-items: center;
@@ -150,7 +150,7 @@ p{
 }
  p{
     width: 500px;
-    font-size: 20px;
+    font-size: 23px;
     align-items: center;
     display: flex;
     justify-content: center;
