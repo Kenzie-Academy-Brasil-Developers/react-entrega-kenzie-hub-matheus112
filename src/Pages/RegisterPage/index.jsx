@@ -3,32 +3,14 @@ import { Container } from './style';
 import {yupResolver} from '@hookform/resolvers/yup'
 import {useForm} from "react-hook-form"
 import Input from "../../Components/Input"
-import {Api} from '../../services/api'
 import img from '../../img/Logo.png'
 import {useNavigate} from'react-router-dom'
-import {toast} from 'react-toastify'
+import { useContext } from 'react';
+import { AuthContexts } from '../../Contexts/AuthContexts';
 
 function Register(){
-    const RegisterSucesso =() => toast.success('Conta criado com sucesso!', {
-        position: "top-center",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        });
-    const RegisterError =() => toast.error('Email já cadastrado!', {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        });
+    const {RegisterUser,}=useContext(AuthContexts)
+
 const formSchema = yup.object({
         name:yup.string().required('Campo obrigatório').min(2,'- Mínimo de 2 digitos'),
         email: yup.string().required('Campo obrigatório').email('- Email inválido'),
@@ -40,16 +22,7 @@ const login= useNavigate()
 const {register, handleSubmit , formState:{errors} }= useForm({resolver: yupResolver(formSchema)})
 
 
-function RegisterUser (data){
-    Api.post("/users", data)
-        .then((res) => {
-            login('/')
-            RegisterSucesso()
-})
-        .catch((err) => {
-            RegisterError()
-});
-};
+
 return(
 <Container>
     <div className='h1Button'>
@@ -64,32 +37,32 @@ return(
             
             <Input name="name" type="text" placeholder="Digite aqui seu Nome" register={register} />
         </div>
-        <div className='emailRegiste'>
+        <div className='DivNameRegister'>
 
             <label htmlFor="">Email <span className='errorSpan'> {errors.email?.message}</span></label>
             <Input name="email" type="text" placeholder="Digite aqui seu email" register={register} />
         </div>
-        <div className='senhaRegiste'>
+        <div className='DivNameRegister'>
 
             <label htmlFor="">Senha <span className='errorSpan'>{errors.password?.message}</span></label>
             <Input name="password" type="text" placeholder="Digite aqui sua senha" register={register} />
         </div>
-        <div className='senhaRegiste'>
+        <div className='DivNameRegister'>
 
             <label htmlFor="">Confirmar Senha <span className='errorSpan'> {errors.confirmar?.message}</span></label>
             <Input name="confirmar" type="text" placeholder="Confirme sua senha" register={register} />
         </div>
-        <div className='bioRegiste'>
+        <div className='DivNameRegister'>
 
             <label htmlFor="">Bio</label>
             <Input name="bio" type="text" placeholder="Fale sobre você" register={register} />
         </div>
-        <div className='contatoRegiste'>
+        <div className='DivNameRegister'>
             <label htmlFor="">Contato</label>
             <Input name="contact" type="text" placeholder="Opção de contrato" register={register} />
         </div>
 
-        <div>
+        <div className='DivNameRegister'>
             <label>
                 <p>Selecione o seu modulo</p>
             <select {...register("course_module")} id="">

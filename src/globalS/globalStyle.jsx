@@ -20,9 +20,12 @@ const GlobalStyle = createGlobalStyle`
         --color-header:#121214;
         --color-grey-text:#868E96;
         --button-hover:#59323F;
+        
 
     
-    
+    button{
+        cursor: pointer;
+    }
     ul{
         list-style: none;
     }

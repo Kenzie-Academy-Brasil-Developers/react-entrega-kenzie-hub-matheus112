@@ -3,32 +3,12 @@ import { Container } from './style';
 import {yupResolver} from '@hookform/resolvers/yup'
 import {useForm} from "react-hook-form"
 import Input from '../../Components/Input'
-import {Api} from '../../services/api'
-import { useNavigate} from'react-router-dom'
-import {toast} from 'react-toastify'
+import { useContext } from 'react';
+import { AuthContexts } from '../../Contexts/AuthContexts';
 
-function Login({token,setTOke}){
-    const sucessoLogin = ()=> toast.success(' Login Efetuado com Sucesso! bem vindo', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-    });
-    const errorLogin = () =>toast.error(' Login Invalido!', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        });
-    const reg= useNavigate()
+function Login(){
+    const {LoginUser, reg}=useContext(AuthContexts)
+
     const formSchema = yup.object({
         email: yup.string().required('Digite um email').email(),
         password: yup.string().required('Senha obrigatoria')
@@ -36,23 +16,8 @@ function Login({token,setTOke}){
         const {register, handleSubmit, formState:{errors} }= useForm({
         resolver: yupResolver(formSchema)
         })
-function LoginUser (data){
-    Api.post("/sessions", data)
-        .then((res) => {localStorage.setItem("@kenzieHub:token",(res.data.token));
-        localStorage.setItem("@kenzieHub:userId",(res.data.user.id));
-        localStorage.setItem("@kenzieHub:name",(res.data.user.name));
-        localStorage.setItem("@kenzieHub:course_module",(res.data.user.course_module));
-        setTOke(true);
-        sucessoLogin()
 
-})
-        .catch((err) => errorLogin());
-};
 
-if (token) {
-    reg('/dashboard')
-
-}
 
 return(
 <Container>

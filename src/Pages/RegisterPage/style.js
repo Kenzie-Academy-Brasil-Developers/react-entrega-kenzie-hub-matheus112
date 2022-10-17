@@ -21,9 +21,12 @@ export const Container = styled.div`
         border-radius: 4px;
         color: white;
     }
+    .DivNameRegister{
+        width: 70%;
+    }
     .buttonEntrar{
         border: none;
-        width: 75vw;
+        width: 70%;
         height: 40px;
         background-color: var(--color-button-login);
         border-radius: 4px;
@@ -79,7 +82,7 @@ export const Container = styled.div`
 
     }
     select{
-        width: 75vw;
+        width: 100%;
         height: 40px;
         background-color: var(--color-input);
         color: #868E96;
@@ -111,8 +114,8 @@ input{
         align-items: center;
         justify-content: center;
         height: 750px;
-        width:30%;
-        max-width: 30%;
+        width:40%;
+        min-width: 30%;
         min-height: 30%;
         gap:20px;
         border-radius: 4px;
@@ -127,7 +130,7 @@ input{
 
     }
     select{
-        width: 21vw;
+        width: 27.5vw;
         height: 40px;
         background-color: var(--color-input);
         color: #868E96;
@@ -136,7 +139,7 @@ input{
     }
     .buttonEntrar{
         border: none;
-        width: 21vw;
+        width: 27.5vw;
         height: 40px;
         background-color: var(--color-button-login);
         border-radius: 4px;
@@ -144,7 +147,7 @@ input{
     }
     .buttonEntrar:hover{
         border: none;
-        width: 21vw;
+        width: 27.5vw;
         height: 40px;
         background-color: var(--button-hover);
         border-radius: 4px;

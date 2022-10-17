@@ -28,8 +28,7 @@ export const Container = styled.div`
     }
     .buttonEntrar{
         border: none;
-        width: 74vw;
-        min-width:10vw;
+        width: 70vw;
         height: 40px;
         background-color: var(--color-button-login);
         border-radius: 4px;
@@ -38,8 +37,7 @@ export const Container = styled.div`
     .buttonCadastre{
         background-color: var(--color-button-cadastrar);
         border: none;
-        width: 74vw;
-        min-width:20vw;
+        width: 70vw;
         height: 40px;
         border-radius: 4px;
         color: white;
@@ -58,6 +56,9 @@ export const Container = styled.div`
         font-family: 'Inter', sans-serif;
         font-size: 9px;
     }
+    .DivEmail,.senha{
+        width: 80%;
+    }
     @media(min-width:728px){
         form{
         display: flex;
@@ -66,16 +67,15 @@ export const Container = styled.div`
         align-items: center;
         justify-content: center;
         height: 400px;
-        width:22vw;
+        width:25%;
+        min-width: 296px;
         gap:20px;
         border-radius: 4px;
         color: white;
-        transition: 2s;
     }
     .buttonEntrar{
         border: none;
-        width: 20.5vw;
-        min-width:10vw;
+        width: 20vw;
         height: 40px;
         background-color: var(--color-button-login);
         border-radius: 4px;
@@ -84,7 +84,7 @@ export const Container = styled.div`
     .buttonCadastre{
         background-color: var(--color-button-cadastrar);
         border: none;
-        width: 20.5vw;
+        width: 20vw;
         min-width: 10vw;
         height: 40px;
         border-radius: 4px;

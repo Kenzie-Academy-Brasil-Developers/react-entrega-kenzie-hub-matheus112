@@ -8,9 +8,8 @@ export const StyledInput = styled.input`
     align-items: center;
     justify-content: center;
     color: white;
-    width:70vw;
+    width: 95%;
     margin-top:5px;
-    max-width: 70vw;
     padding-left: 10px;    
     border: none;
     border-radius: 3px;
@@ -27,7 +26,6 @@ export const StyledInput = styled.input`
     align-items: center;
     justify-content: center;
     color: white;
-    width:20vw;
     padding-left: 10px;    
     border: none;
     border-radius: 3px;
