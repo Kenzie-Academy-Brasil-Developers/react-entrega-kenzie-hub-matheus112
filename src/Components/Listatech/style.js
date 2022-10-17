@@ -73,8 +73,8 @@ span{
     }
    
     @media (min-width: 728px) {
-        width: 55%;
-        max-width: 780px;
+        width: 70%;
+        max-width: 930px;
         min-height: 10%;
         display: flex !important;
         align-items: center !important;
