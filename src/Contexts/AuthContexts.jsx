@@ -32,8 +32,8 @@ export default function AuthProvider({ children }) {
       progress: undefined,
       theme: "light",
     });
-  function LoginUser(data) {
-    Api.post("/sessions", data)
+  async function LoginUser(data) {
+    await Api.post("/sessions", data)
       .then((res) => {
         console.log(res);
         localStorage.setItem("@kenzieHub:token", res.data.token);
@@ -78,17 +78,17 @@ export default function AuthProvider({ children }) {
       progress: undefined,
       theme: "light",
     });
-  const TechError =()=>
-  toast.warning("Technologia já foi cadastrada!", {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-  });
+  const TechError = () =>
+    toast.warning("Technologia já foi cadastrada!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   useEffect(() => {
     async function profileUser() {
       const token = localStorage.getItem("@kenzieHub:token");
@@ -96,24 +96,24 @@ export default function AuthProvider({ children }) {
       await Api.get(`/profile`).then((res) => setTech(res.data.techs));
     }
     profileUser();
-  }, []);
+  }, [token]);
 
-  function onSubmitForm(data) {
+  async function onSubmitForm(data) {
     console.log(data);
-    Api.post("/users/techs", data)
-    .then((res) => {
-      window.location.reload();
-    })
+    await Api.post("/users/techs", data)
+      .then((res) => {
+        window.location.reload();
+      })
       .catch((err) => TechError());
   }
 
-  function deletOn(id) {
-    Api.delete(`/users/techs/${id}`).then((res) => {
-   window.location.reload() ;
+  async function deletOn(id) {
+    await Api.delete(`/users/techs/${id}`).then((res) => {
+      window.location.reload();
     });
   }
-  function RegisterUser(data) {
-    Api.post("/users", data)
+  async function RegisterUser(data) {
+    await Api.post("/users", data)
       .then((res) => {
         reg("/");
         RegisterSucesso();

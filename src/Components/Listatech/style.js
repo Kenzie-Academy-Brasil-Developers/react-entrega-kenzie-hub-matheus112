@@ -56,19 +56,19 @@ span{
 
   }
     button{
-        border: none;
-        background: transparent;
-        color: rgba(255, 255, 255, 0.8);
-        margin-left: 5px;
-        margin-right: 5px;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.8);
+    margin-left: 5px;
+    margin-right: 5px;
 
     }
     button:hover{
-        border: none;
-        background: transparent;
-        color: red;
-        margin-left: 5px;
-        margin-right: 5px;
+    border: none;
+    background: transparent;
+    color: red;
+    margin-left: 5px;
+    margin-right: 5px;
 
     }
    
@@ -85,4 +85,3 @@ span{
         background-color: var(--color-login-container);
     }
 `
- 
