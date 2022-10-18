@@ -6,7 +6,7 @@ export const SectionTech = styled.section `
     max-width: 90%;
     display: flex !important;
     align-items: center !important;
-    height: 450px;
+    height: 400px;
     padding: 2rem;
     margin: 5px 5px;
     overflow-y: auto  !important;
@@ -73,7 +73,7 @@ span{
     }
    
     @media (min-width: 728px) {
-        width: 70%;
+        width: 90%;
         max-width: 930px;
         min-height: 10%;
         display: flex !important;

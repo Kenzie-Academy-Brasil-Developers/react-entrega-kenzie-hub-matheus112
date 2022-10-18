@@ -6,11 +6,13 @@ main{
 
 @media(max-width: 728px){
     main{
-        min-height: 634px;
+        min-height: 70.7vh;
+
         background-color: #000;
     }
     ::-webkit-scrollbar {
         width: 0px;
-        overflow-y: hidden;
     }
+
 }
+

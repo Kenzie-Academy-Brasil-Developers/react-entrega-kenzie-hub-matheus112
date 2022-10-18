@@ -84,6 +84,8 @@ export const Container = styled.header`
     align-items: center;
     flex-direction: column;
     gap: 15px;
+    height: 100px;
+
   }
 
   @media (min-width: 728px) {
@@ -103,12 +105,13 @@ export const Container = styled.header`
       background-color: #000000;
     }
     .divInfoUser {
+      min-width: 100%;
       margin-top: 50px;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
-      flex-direction: row;
-      gap: 5px;
+      gap: 10px;
+      height: 100px;
     }
 
     .pName {
@@ -123,8 +126,17 @@ export const Container = styled.header`
       display: flex;
       align-items: center;
       justify-content: space-evenly;
+     flex-direction: row;
       gap: 10px;
+      height: 100px;
     }
+    .divUser {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
   }
 `;
 export const Main = styled.main`
