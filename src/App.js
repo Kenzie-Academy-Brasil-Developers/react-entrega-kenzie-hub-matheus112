@@ -6,13 +6,16 @@ import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 import AuthProvider from './Contexts/AuthContexts';
+import TechProvider from './Contexts/TechContexts';
 function App() {
   return (
     <main>
       <GlobalStyle/>
-      <AuthProvider>
-        <RoutesMain/>
-      </AuthProvider>
+        <AuthProvider>
+          <TechProvider>
+            <RoutesMain/>
+          </TechProvider>
+        </AuthProvider>
       <ToastContainer />
     </main>
   );

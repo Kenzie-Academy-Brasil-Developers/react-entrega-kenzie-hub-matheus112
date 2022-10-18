@@ -2,9 +2,13 @@ import { SectionTech } from "./style"
 import {FaRegTrashAlt} from "react-icons/fa"
 import { useContext } from "react";
 import { AuthContexts } from "../../Contexts/AuthContexts";
+import { TechContexts } from "../../Contexts/TechContexts";
 function ListTech(){
 
-    const {tech ,deletOn}=useContext(AuthContexts)
+    const {deletOn}=useContext(TechContexts)
+    const {tech}=useContext(AuthContexts)
+
+
     return(
         <>
         

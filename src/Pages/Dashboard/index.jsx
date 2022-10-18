@@ -9,13 +9,8 @@ import ModalBg from "../../Components/Modal/ModalBg"
 import { AuthContexts } from "../../Contexts/AuthContexts"
 function Dashboard(){
     const log = useNavigate()
-
-  
-    const { tech}=useContext(AuthContexts)
-
+    const {tech}=useContext(AuthContexts)
     const [modalAdd , setModalAdd] = useState(false)
-
-
     const userId = localStorage.getItem('@kenzieHub:userId')
     
     

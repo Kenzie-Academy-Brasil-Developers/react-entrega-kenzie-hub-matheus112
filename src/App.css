@@ -1,4 +1,16 @@
 main{
     min-height: 100vh;
     background-color: #000;
+
+}
+
+@media(max-width: 728px){
+    main{
+        min-height: 634px;
+        background-color: #000;
+    }
+    ::-webkit-scrollbar {
+        width: 0px;
+        overflow-y: hidden;
+    }
 }

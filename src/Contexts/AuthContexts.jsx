@@ -6,10 +6,12 @@ import { toast } from "react-toastify";
 export const AuthContexts = createContext({});
 
 export default function AuthProvider({ children }) {
-  const reg = useNavigate();
-  const [token, setToke] = useState(false);
-  const [user, setUser] = useState(null);
   const [tech, setTech] = useState([]);
+
+  const navigate = useNavigate();
+  const [token, setToken] = useState(false);
+  const [user, setUser] = useState(null);
+
   const sucessoLogin = () =>
     toast.success(" Login Efetuado com Sucesso! bem vindo", {
       position: "top-center",
@@ -44,12 +46,10 @@ export default function AuthProvider({ children }) {
           res.data.user.course_module
         );
         Api.defaults.headers.authorization = `Bearer ${token}`;
-
-        reg("/dashboard");
-
+        navigate("/dashboard");
         setUser(res.data.user);
         setTech(res.data.user.techs);
-        setToke(true);
+        setToken(true);
         sucessoLogin();
       })
       .catch((err) => {
@@ -78,44 +78,26 @@ export default function AuthProvider({ children }) {
       progress: undefined,
       theme: "light",
     });
-  const TechError = () =>
-    toast.warning("Technologia já foi cadastrada!", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+
+
   useEffect(() => {
     async function profileUser() {
       const token = localStorage.getItem("@kenzieHub:token");
       Api.defaults.headers.authorization = `Bearer ${token}`;
-      await Api.get(`/profile`).then((res) => setTech(res.data.techs));
+      await Api.get(`/profile`).then((res) => {
+        setTech(res.data.techs)
+        navigate('/dashboard')
+      });
     }
     profileUser();
-  }, [token]);
+  }, []);
 
-  async function onSubmitForm(data) {
-    console.log(data);
-    await Api.post("/users/techs", data)
-      .then((res) => {
-        window.location.reload();
-      })
-      .catch((err) => TechError());
-  }
 
-  async function deletOn(id) {
-    await Api.delete(`/users/techs/${id}`).then((res) => {
-      window.location.reload();
-    });
-  }
+
   async function RegisterUser(data) {
     await Api.post("/users", data)
       .then((res) => {
-        reg("/");
+        navigate("/");
         RegisterSucesso();
       })
       .catch((err) => {
@@ -129,11 +111,8 @@ export default function AuthProvider({ children }) {
         LoginUser,
         token,
         tech,
-        reg,
         user,
         setUser,
-        onSubmitForm,
-        deletOn,
         RegisterUser,
       }}
     >
