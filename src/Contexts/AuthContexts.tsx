@@ -1,15 +1,52 @@
-import { createContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { createContext, useEffect, useState } from "react";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 import { Api } from "../services/api";
 import { toast } from "react-toastify";
 
-export const AuthContexts = createContext({});
 
-export default function AuthProvider({ children }) {
+interface iCounterContextProps{
+  children:React.ReactNode;
+}
+interface iCounterContext{
+  tech:iTech[];
+  user:iUser | null;
+  setUser: React.Dispatch<React.SetStateAction< null >>;
+  navigate: NavigateFunction
+  LoginUser:(data: iLoginUser) => Promise<void>
+  RegisterUser:(data: iRegisterUser) => Promise<void>
+
+}
+interface iTech{
+  title:string
+  status:string
+  id:string
+}
+
+interface iUser{
+    email:string;
+    password:string
+}
+
+export interface iLoginUser{
+  email:string ;
+  password:string
+}
+export interface iRegisterUser{
+  email:string
+  password:string
+  name:string
+  contact:string
+  course_module:string
+}
+
+export const AuthContexts = createContext<iCounterContext>({} as iCounterContext);
+
+
+
+export default function AuthProvider({ children }:iCounterContextProps) {
   const [tech, setTech] = useState([]);
 
   const navigate = useNavigate();
-  const [token, setToken] = useState(false);
   const [user, setUser] = useState(null);
 
   const sucessoLogin = () =>
@@ -34,25 +71,23 @@ export default function AuthProvider({ children }) {
       progress: undefined,
       theme: "light",
     });
-  async function LoginUser(data) {
+
+
+  async function LoginUser(data:iLoginUser) {
     await Api.post("/sessions", data)
       .then((res) => {
-        console.log(res);
+        
         localStorage.setItem("@kenzieHub:token", res.data.token);
         localStorage.setItem("@kenzieHub:userId", res.data.user.id);
         localStorage.setItem("@kenzieHub:name", res.data.user.name);
-        localStorage.setItem(
-          "@kenzieHub:course_module",
-          res.data.user.course_module
-        );
-        Api.defaults.headers.authorization = `Bearer ${token}`;
+        localStorage.setItem("@kenzieHub:course_module",res.data.user.course_module);
+        Api.defaults.headers.authorization = `Bearer ${res.data.token}`;
         navigate("/dashboard");
         setUser(res.data.user);
         setTech(res.data.user.techs);
-        setToken(true);
         sucessoLogin();
       })
-      .catch((err) => {
+      .catch((_) => {
         errorLogin();
       });
   }
@@ -82,25 +117,22 @@ export default function AuthProvider({ children }) {
 
   useEffect(() => {
     async function profileUser() {
+      setTimeout(()=>{},1500)
       const token = localStorage.getItem("@kenzieHub:token");
+      console.log(token)
       Api.defaults.headers.authorization = `Bearer ${token}`;
-      await Api.get(`/profile`).then((res) => {
-        setTech(res.data.techs)
-        navigate('/dashboard')
-      });
+      await Api.get(`/profile`).then((res) => {setTech(res.data.techs) ; navigate('/dashboard')});
     }
     profileUser();
-  }, []);
+  }, [user,navigate]);
 
-
-
-  async function RegisterUser(data) {
+  async function RegisterUser(data:iRegisterUser) {
     await Api.post("/users", data)
       .then((res) => {
         navigate("/");
         RegisterSucesso();
       })
-      .catch((err) => {
+      .catch((_) => {
         RegisterError();
       });
   }
@@ -109,9 +141,9 @@ export default function AuthProvider({ children }) {
     <AuthContexts.Provider
       value={{
         LoginUser,
-        token,
         tech,
         user,
+        navigate,
         setUser,
         RegisterUser,
       }}

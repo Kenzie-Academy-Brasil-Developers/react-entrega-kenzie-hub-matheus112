@@ -2,22 +2,40 @@ import { createContext } from "react";
 import { Api } from "../services/api";
 import { toast } from "react-toastify";
 
-export const TechContexts = createContext({});
+export const TechContexts = createContext({} as iCounterContext);
 
+interface iCounterContextProps{
+    children:React.ReactNode;
+  }
 
-export default function TechProvider({ children }) {
+  interface iCounterContext{
+    deletOn:(id: string) => Promise<void>
+    onSubmitForm:(id: iOnSubmitForm) => Promise<void>
+  }
 
-    async function deletOn(id) {
+export  interface iDeleteOn{
+    deletOn:string
+    id:string
+  }
+
+export interface iOnSubmitForm  {
+    title:string
+    status:string
+}
+
+export default function TechProvider({ children }:iCounterContextProps) {
+
+    async function deletOn(id:string) {
         await Api.delete(`/users/techs/${id}`).then((res) => {
             window.location.reload();
         });
     }
-    async function onSubmitForm(data) {
+    async function onSubmitForm(data:iOnSubmitForm) {
         await Api.post("/users/techs", data)
             .then((res) => {
                 window.location.reload();
             })
-            .catch((err) => TechError());
+            .catch((_) => TechError());
     }
     const TechError = () =>
         toast.warning("Technologia já foi cadastrada!", {

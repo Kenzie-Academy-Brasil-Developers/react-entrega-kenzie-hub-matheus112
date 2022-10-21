@@ -6,17 +6,24 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { useContext } from "react";
 import { TechContexts } from "../../../Contexts/TechContexts";
-
-function ModalAddtech({ setModalAdd }) {
+import { iSetModal } from "../../../Pages/Dashboard";
+function ModalAddtech({ setModalAdd }: iSetModal) {
     const {onSubmitForm}=useContext(TechContexts)
+
+    type FormValue = {
+        title:string
+        status:string
+    }
+
     const formSchema = yup.object({
         title: yup.string().required(' Digite uma Tecnologia'),
     })
   
-    const {register, handleSubmit ,formState :{errors} }= useForm({
+    const {register, handleSubmit ,formState :{errors} }= useForm <FormValue>({
     resolver: yupResolver(formSchema)
     })
 
+  
     
     return (
         <>

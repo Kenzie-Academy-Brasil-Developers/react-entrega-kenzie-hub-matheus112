@@ -1,4 +1,5 @@
 import {useNavigate} from "react-router-dom"
+// @ts-ignore
 import img from "../../img/Logo.png"
 import './style'
 import {useContext,useEffect,  useState} from "react"
@@ -7,9 +8,20 @@ import ListTech from "../../Components/Listatech"
 import ModalAddtech from "../../Components/Modal/ModalAdd"
 import ModalBg from "../../Components/Modal/ModalBg"
 import { AuthContexts } from "../../Contexts/AuthContexts"
+
+
+
+
+
+export interface iSetModal{
+    modalAdd?:boolean ;
+    setModalAdd: React.Dispatch<React.SetStateAction<boolean>>
+}
 function Dashboard(){
-    const log = useNavigate()
+    const navigate = useNavigate()
     const {tech}=useContext(AuthContexts)
+
+
     const [modalAdd , setModalAdd] = useState(false)
     const userId = localStorage.getItem('@kenzieHub:userId')
     
@@ -21,13 +33,13 @@ function Dashboard(){
     
     useEffect(()=>{
         if(!userId){
-            log('/')
+            navigate('/')
         }
-    },[log,userId])  
+    },[navigate,userId])  
 
     
     function logout(){
-        log('/')
+        navigate('/')
         localStorage.clear()
     }
 

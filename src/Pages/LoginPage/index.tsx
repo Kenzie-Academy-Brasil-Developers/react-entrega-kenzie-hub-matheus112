@@ -7,15 +7,27 @@ import { useContext } from 'react';
 import { AuthContexts } from '../../Contexts/AuthContexts';
 
 function Login() {
-    const { LoginUser, reg } = useContext(AuthContexts)
+    const { LoginUser , navigate } = useContext(AuthContexts)
+
+    
 
     const formSchema = yup.object({
         email: yup.string().required('Digite um email').email(),
         password: yup.string().required('Senha obrigatoria')
     })
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    type FormValue = {
+        email:string
+        password:string
+        register:string
+        placeholder:string
+       
+    }
+
+
+    const { register, handleSubmit, formState: { errors } } = useForm<FormValue>({
         resolver: yupResolver(formSchema)
     })
+
 
 
 
@@ -37,7 +49,8 @@ function Login() {
                 <button className='buttonEntrar' type='submit'>Entrar</button>
 
                 <span className='spanContar'>Ainda não possui uma conta?</span>
-                <button className='buttonCadastre' onClick={() => reg("/register")} >Cadastre-se</button>
+
+                <button className='buttonCadastre' onClick={()=>navigate('/register')} >Cadastre-se</button>
             </form>
         </Container>
     )

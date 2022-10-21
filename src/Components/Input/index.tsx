@@ -2,7 +2,10 @@
 
 import {StyledInput} from './style'
 
-const Input = ({register,name,...res})=>{
+
+
+
+const Input = ({register,name,...res}:any)=>{
     return <StyledInput {...register(name)} {...res}/> 
     
 }

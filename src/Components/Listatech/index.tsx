@@ -7,8 +7,8 @@ function ListTech(){
 
     const {deletOn}=useContext(TechContexts)
     const {tech}=useContext(AuthContexts)
-
-
+    
+  
     return(
         <>
         

@@ -1,7 +1,7 @@
 import { ModalBgStyled } from "./style"
 
 
-function ModalBg({children}){
+function ModalBg({children}:any){
     return(
             
             <ModalBgStyled>

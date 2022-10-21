@@ -3,7 +3,9 @@ import { Container } from './style';
 import {yupResolver} from '@hookform/resolvers/yup'
 import {useForm} from "react-hook-form"
 import Input from "../../Components/Input"
+// @ts-ignore
 import img from '../../img/Logo.png'
+
 import {useNavigate} from'react-router-dom'
 import { useContext } from 'react';
 import { AuthContexts } from '../../Contexts/AuthContexts';
@@ -19,7 +21,16 @@ const formSchema = yup.object({
 })
 const login= useNavigate()
 
-const {register, handleSubmit , formState:{errors} }= useForm({resolver: yupResolver(formSchema)})
+type FormValue = {
+    email:string
+    password:string
+    name:string
+    bio:string
+    contact:string
+    course_module:string
+    confirmar:string
+}
+const {register, handleSubmit , formState:{errors} }= useForm <FormValue>({resolver: yupResolver(formSchema)})
 
 
 

@@ -52,7 +52,6 @@ span{
     display: flex;
     justify-content: flex-start;
     margin-left: 15px !important;
-   
 
   }
     button{

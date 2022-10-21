@@ -1,18 +1,11 @@
-main{
-    min-height: 100vh;
+main,body{
     background-color: #000;
 
 }
 
-@media(max-width: 728px){
-    main{
-        min-height: 70.7vh;
-
-        background-color: #000;
-    }
-    ::-webkit-scrollbar {
-        width: 0px;
-    }
-
+body{
+    min-height: 100vh;
 }
+
+
 
